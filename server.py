@@ -53,8 +53,10 @@ def manejar_cliente(cliente_socket, direccion, nombre_cliente):
             if texto:
                 # Formatear el mensaje con el identificador requerido en el examen
                 mensaje_formateado = f"[{nombre_cliente}]: {texto}"
+
                 # Mostrar el mensaje en la consola del servidor y restaurar el prompt
                 print(f"\r{mensaje_formateado}\n[SERVIDOR]: ", end="", flush=True)
+
                 # Retransmitir el mensaje a los demás clientes conectados
                 broadcast(mensaje_formateado, cliente_socket)
 
@@ -80,8 +82,10 @@ def escribir_servidor():
             texto = input("[SERVIDOR]: ")
             if texto.strip():
                 mensaje_formateado = f"[SERVIDOR]: {texto.strip()}"
+
                 # Enviar el mensaje a todos los clientes conectados
                 broadcast(mensaje_formateado, remitente_socket=None)
+                
         except EOFError:
             break
         except Exception as e:

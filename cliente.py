@@ -5,11 +5,12 @@ import threading
 HOST = '127.0.0.1'
 PORT = 5000
 
-
+# Recibe mensajes del servidor
 def recibir_mensajes(cliente_socket, prompt):
 
     while True:
         try:
+            # Recibir datos del cliente (hasta 1024 bytes)
             datos = cliente_socket.recv(1024)
             if not datos:
                 print("\r[INFO] El servidor cerró la conexión.", flush=True)
@@ -20,11 +21,12 @@ def recibir_mensajes(cliente_socket, prompt):
             print("\r[INFO] Desconectado del servidor.", flush=True)
             break
 
-
+# Envia mensajes al servidor
 def enviar_mensajes(cliente_socket, prompt):
 
     while True:
         try:
+            # Ingreso y envio de mensaje al servidor
             mensaje = input(prompt)
             if mensaje.strip().lower() == 'salir':
                 cliente_socket.close()
@@ -64,7 +66,7 @@ def iniciar_cliente():
         cliente.close()
         return
 
-    # Crear e iniciar el hilo de escucha en segundo plano (daemon)
+    # Crear e iniciar el hilo de escucha en segundo plano 
     hilo_recepcion = threading.Thread(target=recibir_mensajes, args=(cliente, prompt), daemon=True)
     hilo_recepcion.start()
 

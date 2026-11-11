@@ -21,7 +21,12 @@ Ejecuta el siguiente comando para levantar el contenedor del servidor con el pue
 docker compose run -it --rm --service-ports servidor-chat
 ```
 
-> **Nota:** Se utiliza `docker compose run -it --rm --service-ports` en lugar de `docker compose up` para que el teclado (`stdin`) quede conectado al contenedor y puedas escribir mensajes directamente desde la consola del servidor como `[SERVIDOR]`.
+**¿Qué hace cada parte del comando?**
+- **`docker compose run`**: Ejecuta un servicio del `docker-compose.yml` conectando la terminal directamente al proceso (a diferencia de `up`, que no conecta el teclado).
+- **`-it`**: Habilita el modo interactivo (`-i`) y una consola virtual (`-t`) para poder escribir mensajes como `[SERVIDOR]:` desde esa terminal.
+- **`--rm`**: Elimina automáticamente el contenedor al detenerlo (`Ctrl + C`) para no dejar contenedores detenidos.
+- **`--service-ports`**: Publica los puertos definidos en el servicio (`5000:5000`) para que los clientes locales puedan conectarse.
+- **`servidor-chat`**: Nombre del servicio a ejecutar definido en `docker-compose.yml`.
 
 ### 2. Iniciar el Cliente 1 en local (Terminal 2)
 
