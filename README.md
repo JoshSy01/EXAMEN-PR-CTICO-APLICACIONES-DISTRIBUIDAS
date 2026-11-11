@@ -58,3 +58,8 @@ El servidor le asignará automáticamente el identificador `[CLIENTE 2]`.
   ```bash
   docker compose down
   ```
+
+
+## Ejemplo de ejecución:
+<img width="1222" height="707" alt="Captura de pantalla 2026-11-11 122639" src="https://github.com/user-attachments/assets/2e212fd6-acf7-4f7f-a9e7-f2ac97ad75f8" />
+
